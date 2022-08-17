@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speed Zoom &mdash; Safire Engine 1.0 documentation</title>
+  <title>Rails &mdash; Safire Engine 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Look Ahead" href="lookAhead.html" />
-    <link rel="prev" title="Follow" href="follow.html" /> 
+    <link rel="next" title="Shakes" href="shakes.html" />
+    <link rel="prev" title="Cinematics" href="cinematics.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,11 +42,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
@@ -75,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Speed Zoom</li>
+      <li>Rails</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/speedZoom.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/rails.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,10 +85,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="speed-zoom">
-<h1>Speed Zoom<a class="headerlink" href="#speed-zoom" title="Permalink to this headline"></a></h1>
-<p>The camera will zoom based on the target’s speed. Add as many threshold
-speeds as necessary. Arrange them from the lowest threshold to the highest threshold.</p>
+  <section id="rails">
+<h1>Rails<a class="headerlink" href="#rails" title="Permalink to this headline"></a></h1>
+<p>The camera moves in a segmented path as it follows the target. A segmented path consists of targets that you must
+place in the scene. The first and last targets will be the triggers. Once the target enters a trigger, the camera begins
+to follow the rail path. This requires the Follow module to be enabled.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -100,17 +101,24 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Threshold</p></td>
-<td><p>The speed the target must exceed or equal to trigger a zoom.</p></td>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p>The name of the rail for identification purposes (optional).</p></td>
 </tr>
-<tr class="row-odd"><td><p>Zoom</p></td>
-<td><p>The camera zoom level.</p></td>
+<tr class="row-odd"><td><p>Horizontal</p></td>
+<td><p>The camera follows the target’s horizontal position.
+This rail shouldn’t have vertical segments.</p></td>
 </tr>
-<tr class="row-even"><td><p>Speed</p></td>
-<td><p>How quickly the camera should zoom.</p></td>
+<tr class="row-even"><td><p>Vertical</p></td>
+<td><p>The camera follows the target’s vertical position.
+This rail shouldn’t have horizontal segments.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Axis</p></td>
-<td><p>The axis in which to detect the target’s speed.</p></td>
+<tr class="row-odd"><td><p>Auto</p></td>
+<td><p>The camera completely ignores the target’s position and follows the segmented path at a
+specified speed. The automatic rail contains a Unity Event that is
+invoked when it completes the path.</p></td>
+</tr>
+<tr class="row-even"><td><p>RailPause (bool value)</p></td>
+<td><p>Pause or unpause an active auto rail.</p></td>
 </tr>
 </tbody>
 </table>
@@ -120,8 +128,8 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="follow.html" class="btn btn-neutral float-left" title="Follow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lookAhead.html" class="btn btn-neutral float-right" title="Look Ahead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cinematics.html" class="btn btn-neutral float-left" title="Cinematics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shakes.html" class="btn btn-neutral float-right" title="Shakes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

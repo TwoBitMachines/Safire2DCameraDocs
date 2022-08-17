@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speed Zoom &mdash; Safire Engine 1.0 documentation</title>
+  <title>Pixel Perfect &mdash; Safire Engine 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -19,8 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Look Ahead" href="lookAhead.html" />
-    <link rel="prev" title="Follow" href="follow.html" /> 
+    <link rel="prev" title="User" href="user.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,7 +41,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
@@ -58,7 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pixelPerfect.html">Pixel Perfect</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pixel Perfect</a></li>
 </ul>
 
         </div>
@@ -75,9 +74,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Speed Zoom</li>
+      <li>Pixel Perfect</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/speedZoom.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/pixelPerfect.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,10 +84,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="speed-zoom">
-<h1>Speed Zoom<a class="headerlink" href="#speed-zoom" title="Permalink to this headline"></a></h1>
-<p>The camera will zoom based on the target’s speed. Add as many threshold
-speeds as necessary. Arrange them from the lowest threshold to the highest threshold.</p>
+  <section id="pixel-perfect">
+<h1>Pixel Perfect<a class="headerlink" href="#pixel-perfect" title="Permalink to this headline"></a></h1>
+<p>Event though Unity already has a Pixel Perfect Camera, this module will be kept
+for the completeness of the engine.</p>
+<p>This module is intended for use with orthographic cameras. Before starting your game,
+choose the resolution the game will be designed for. By default it’s set to 320x180 since
+it can multiply nicely into common device resolutions. This will determine how much of
+the game world the user can view as determined by the PPU of your game art; changing this
+resolution later might change the look and feel of the game, so choose
+wisely.</p>
+<p>The camera will execute in Edit Mode and create black bars automatically
+for any screen resolution that is not pixel perfect.</p>
+<p>It is recommended to use a separate camera for UI. Add the PixelPerfectUI component to the UI
+camera. Make sure the UI camera is only rendering the UI layer. On the flip side, the main camera should not
+render the UI layer. Match the PPU and resolution settings. On any canvas in your game world, set
+the render mode to Screen Space - Camera and set the UI camera as a reference. Set Canvas Scaler to scale
+with screen size and set the target resolution. Set the UI camera depth to a larger
+value than the main camera so it renders on top of it. And finally, set the clear flags to Don’t Clear.</p>
+<p>Typically you shouldn’t zoom with a pixel perfect camera as it will break pixel perfectness. But if you do, zoom by integer multiples
+if possible to retain a pixel perfect screen.</p>
+<p>All your sprites should strive to have the same PPU settings and bet set to Point filter with no compression.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -100,17 +116,13 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Threshold</p></td>
-<td><p>The speed the target must exceed or equal to trigger a zoom.</p></td>
+<tr class="row-even"><td><p>PPU</p></td>
+<td><p>This is the PPU (Pixel Per Unit) of the game art. How many pixels fit in one world unit of the game?
+The Wrench Button, if clicked, will snap all scene objects to the PPU grid. The color will change the color
+of the black bars.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Zoom</p></td>
-<td><p>The camera zoom level.</p></td>
-</tr>
-<tr class="row-even"><td><p>Speed</p></td>
-<td><p>How quickly the camera should zoom.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Axis</p></td>
-<td><p>The axis in which to detect the target’s speed.</p></td>
+<tr class="row-odd"><td><p>Resolution</p></td>
+<td><p>The target size of your game world.</p></td>
 </tr>
 </tbody>
 </table>
@@ -120,8 +132,7 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="follow.html" class="btn btn-neutral float-left" title="Follow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lookAhead.html" class="btn btn-neutral float-right" title="Look Ahead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user.html" class="btn btn-neutral float-left" title="User" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

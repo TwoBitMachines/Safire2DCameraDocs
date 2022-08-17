@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speed Zoom &mdash; Safire Engine 1.0 documentation</title>
+  <title>World Clamp &mdash; Safire Engine 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Look Ahead" href="lookAhead.html" />
-    <link rel="prev" title="Follow" href="follow.html" /> 
+    <link rel="next" title="User" href="user.html" />
+    <link rel="prev" title="Regions" href="regions.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,7 +42,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
@@ -56,7 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="slowMotionTrigger.html">Slow Motion Trigger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basicTrigger.html">Basic Trigger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">World Clamp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pixelPerfect.html">Pixel Perfect</a></li>
 </ul>
@@ -75,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Speed Zoom</li>
+      <li>World Clamp</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/speedZoom.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/worldClamp.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,10 +85,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="speed-zoom">
-<h1>Speed Zoom<a class="headerlink" href="#speed-zoom" title="Permalink to this headline"></a></h1>
-<p>The camera will zoom based on the target’s speed. Add as many threshold
-speeds as necessary. Arrange them from the lowest threshold to the highest threshold.</p>
+  <section id="world-clamp">
+<h1>World Clamp<a class="headerlink" href="#world-clamp" title="Permalink to this headline"></a></h1>
+<p>The world clamp is a rectangle that encapsulates the entire game level and prevents
+the camera from moving outside of it. This is similar to rooms. However, while rooms can overlap,
+they can’t exist inside each other. This gets around that limitation.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -100,17 +101,20 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Threshold</p></td>
-<td><p>The speed the target must exceed or equal to trigger a zoom.</p></td>
+<tr class="row-even"><td><p>Destination</p></td>
+<td><p>The transform where the gameobject will be teleported to.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Zoom</p></td>
-<td><p>The camera zoom level.</p></td>
+<tr class="row-odd"><td><p>LayerMask</p></td>
+<td><p>Only gameobjects on this layer mask will be teleported.</p></td>
 </tr>
-<tr class="row-even"><td><p>Speed</p></td>
-<td><p>How quickly the camera should zoom.</p></td>
+<tr class="row-even"><td><p>Delay</p></td>
+<td><p>Add a time delay before teleporting.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Axis</p></td>
-<td><p>The axis in which to detect the target’s speed.</p></td>
+<tr class="row-odd"><td><p>On Delay Start</p></td>
+<td><p>The event invoked when the time delay begins. This only executes if delay is greater than zero.</p></td>
+</tr>
+<tr class="row-even"><td><p>On Teleport</p></td>
+<td><p>The event invoked when a gameobject is teleported.</p></td>
 </tr>
 </tbody>
 </table>
@@ -120,8 +124,8 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="follow.html" class="btn btn-neutral float-left" title="Follow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lookAhead.html" class="btn btn-neutral float-right" title="Look Ahead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="regions.html" class="btn btn-neutral float-left" title="Regions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user.html" class="btn btn-neutral float-right" title="User" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

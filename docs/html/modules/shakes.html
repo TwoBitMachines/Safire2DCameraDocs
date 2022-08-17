@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speed Zoom &mdash; Safire Engine 1.0 documentation</title>
+  <title>Shakes &mdash; Safire Engine 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Look Ahead" href="lookAhead.html" />
-    <link rel="prev" title="Follow" href="follow.html" /> 
+    <link rel="next" title="Parallax" href="parallax.html" />
+    <link rel="prev" title="Rails" href="rails.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,12 +42,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Shakes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
 <li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
@@ -75,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Speed Zoom</li>
+      <li>Shakes</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/speedZoom.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/shakes.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,10 +85,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="speed-zoom">
-<h1>Speed Zoom<a class="headerlink" href="#speed-zoom" title="Permalink to this headline"></a></h1>
-<p>The camera will zoom based on the target’s speed. Add as many threshold
-speeds as necessary. Arrange them from the lowest threshold to the highest threshold.</p>
+  <section id="shakes">
+<h1>Shakes<a class="headerlink" href="#shakes" title="Permalink to this headline"></a></h1>
+<p>This is an easy to use shake creator. The idea is to create shakes with predefined settings so they
+can be activated at runtime by name. Each shake can be called by a method or by using the shake trigger.
+Each shake that is created is actually linked to a Scriptable Object, which means you don’t have
+to keep recreating the same shakes for each scene. As long as the Scriptable Object is referenced, the
+shakes will persist. In fact, the module won’t work without this Scriptable Object. To create one,
+right click Create/FlareEngine/ShakesSO.</p>
+<p>Any shake implemented will run simultaneously with all other shakes. The system will pool
+and recycle shakes to keep things nice an efficient.</p>
+<p>Press the play button to test any shake while in Editor Mode.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -100,17 +107,75 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Threshold</p></td>
-<td><p>The speed the target must exceed or equal to trigger a zoom.</p></td>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p>Name the shake for identification purposes.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Zoom</p></td>
-<td><p>The camera zoom level.</p></td>
+<tr class="row-odd"><td><p>TimeScale</p></td>
+<td><p>If the shake uses time-scale, the shake can be affected by slow motion.</p></td>
+</tr>
+<tr class="row-even"><td><p>Random</p></td>
+<td><p>The camera abruptly shakes according to a random pattern.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Perlin</p></td>
+<td><p>Shake the camera with the perlin noise algorithm, resulting in a smoother and less chaotic
+shake.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sine</p></td>
+<td><p>Shake the camera with a sinusoidal algorithm.</p></td>
+</tr>
+<tr class="row-odd"><td><p>One shot</p></td>
+<td><p>The camera shakes in a single direction. This is a recoil.
+This shake will need to be called by script since
+the shake direction can’t be known ahead of time.</p></td>
+</tr>
+<tr class="row-even"><td><p>Is Single Shake</p></td>
+<td><p>These shakes are meant for high volumes short duration shakes such as bullet impacts.
+These shakes are grouped together and handled in a single state. The advantage is that these shakes are not
+added into the shake pool.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amplitude</p></td>
+<td><p>This is the camera displacement in the horizontal and vertical axis. <strong>The value Z is the angle displacement.</strong></p></td>
 </tr>
 <tr class="row-even"><td><p>Speed</p></td>
-<td><p>How quickly the camera should zoom.</p></td>
+<td><p>How fast the shake is implemented. Typically, a lower value is smoother, while a higher value if sharper.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Axis</p></td>
-<td><p>The axis in which to detect the target’s speed.</p></td>
+<tr class="row-odd"><td><p>Strength</p></td>
+<td><p>Shake intensity.</p></td>
+</tr>
+<tr class="row-even"><td><p>Duration</p></td>
+<td><p>How long the shake will last. The toggle button, if enabled, will make the shake last indefinitely. This is
+a constant shake and it must be turned off manually. Only one constant shake can run at a time.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Shake()</p></td>
+<td><p>A convenient method for calling a normal sized shake.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ShakeSmall()</p></td>
+<td><p>A convenient method for calling a small shake.</p></td>
+</tr>
+<tr class="row-even"><td><p>Shake(string shakeName)</p></td>
+<td><p>Call the specified shake.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ShakeType(…)</p></td>
+<td><p>Create a shake through script. Call any of the different types.</p></td>
+</tr>
+<tr class="row-even"><td><p>TurnOffConstantShake ( )</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>TurnOffAllShakes ( )</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -120,8 +185,8 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="follow.html" class="btn btn-neutral float-left" title="Follow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lookAhead.html" class="btn btn-neutral float-right" title="Look Ahead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rails.html" class="btn btn-neutral float-left" title="Rails" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="parallax.html" class="btn btn-neutral float-right" title="Parallax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

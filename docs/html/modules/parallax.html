@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speed Zoom &mdash; Safire Engine 1.0 documentation</title>
+  <title>Parallax &mdash; Safire Engine 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Look Ahead" href="lookAhead.html" />
-    <link rel="prev" title="Follow" href="follow.html" /> 
+    <link rel="next" title="Peek" href="peek.html" />
+    <link rel="prev" title="Shakes" href="shakes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,13 +42,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
 <li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="highlightTarget.html">Highlight Target</a></li>
@@ -75,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Speed Zoom</li>
+      <li>Parallax</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/speedZoom.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/parallax.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,10 +85,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="speed-zoom">
-<h1>Speed Zoom<a class="headerlink" href="#speed-zoom" title="Permalink to this headline"></a></h1>
-<p>The camera will zoom based on the target’s speed. Add as many threshold
-speeds as necessary. Arrange them from the lowest threshold to the highest threshold.</p>
+  <section id="parallax">
+<h1>Parallax<a class="headerlink" href="#parallax" title="Permalink to this headline"></a></h1>
+<p>Create the illusion of depth by using several backgrounds to move with the camera. The
+parallax will scroll infinitely, even with a perspective camera.</p>
+<p>Each background transform must contain a single sprite that is set to pivot center.
+Also, don’t forget to set the layer order manually for each sprite in order to render the background images in correct order.
+At runtime these backgrounds will be duplicated to achieve infinite parallax scrolling. Click the add button
+to add as many backgrounds as necessary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using a perspective camera, parallax comes for free! But you can still use this module to get infinite scrolling.</p>
+</div>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -100,28 +108,36 @@ speeds as necessary. Arrange them from the lowest threshold to the highest thres
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Threshold</p></td>
-<td><p>The speed the target must exceed or equal to trigger a zoom.</p></td>
+<tr class="row-even"><td><p>Transform Layer</p></td>
+<td><p>The Transform that will scroll with the camera.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Zoom</p></td>
-<td><p>The camera zoom level.</p></td>
+<tr class="row-odd"><td><p>Parallax Rate</p></td>
+<td><p>The rate at which the transform scrolls with the camera. A value approaching 1 is for the farthest layers.
+A value approaching 0 is for the layers nearest to the player. Values less than -1 are for foregrounds layers.</p></td>
 </tr>
-<tr class="row-even"><td><p>Speed</p></td>
-<td><p>How quickly the camera should zoom.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Axis</p></td>
-<td><p>The axis in which to detect the target’s speed.</p></td>
+<tr class="row-even"><td><p>Auto Scroll</p></td>
+<td><p>If this value is greater than zero, the transform will automatically move on its own.
+This could be a layer that contains clouds. Try many parallax rates until you get one that gives a correct motion with the auto scroll.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Infinite scrolling limitations: the camera size must always be smaller
+than the size of the image. If it isn’t, there will be noticeable gaps in each
+layer during scrolling. Things that can cause this are zooming the
+camera to a large value, a perspective camera that is too far away from
+the image layer, or a camera size that is simply too large. These issues
+may present themselves concurrently if not careful. Choose zoom levels wisely.</p>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="follow.html" class="btn btn-neutral float-left" title="Follow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lookAhead.html" class="btn btn-neutral float-right" title="Look Ahead" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="shakes.html" class="btn btn-neutral float-left" title="Shakes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="peek.html" class="btn btn-neutral float-right" title="Peek" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
