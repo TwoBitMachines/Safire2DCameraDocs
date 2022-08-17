@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User &mdash; Safire Engine 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pixel Perfect" href="pixelPerfect.html" />
+    <link rel="prev" title="World Clamp" href="worldClamp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Safire Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
+<li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="highlightTarget.html">Highlight Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoomTrigger.html">Zoom Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slowMotionTrigger.html">Slow Motion Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basicTrigger.html">Basic Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixelPerfect.html">Pixel Perfect</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Safire Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>User</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/user.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user">
+<h1>User<a class="headerlink" href="#user" title="Permalink to this headline"></a></h1>
+<p>Instead of having the camera follow the target, the camera is
+controlled directly by the user using touch, the keyboard, and mouse
+input. Switch the follow type from Target to User.</p>
+<p>When the follow type is User, the system is using the center of the camera
+as the target. Thus, this mode isn’t compatible with the following modules:
+Dead Zone, Look Ahead, Follow Blocks, Multiple Targets, Regions, Screen Zone, Push Zone, and Peek.</p>
+<hr class="docutils" />
+<section id="pan">
+<h2>Pan<a class="headerlink" href="#pan" title="Permalink to this headline"></a></h2>
+<p>This controls the camera movement. Use Touch, Mouse, or Keyboard
+input to move the camera.</p>
+<p>If a touch or mouse position is at the edge of
+the camera, Pan Edge will move the camera automatically in that
+direction. Choose how big the area will be to detect a touch or mouse
+position near the edge of the camera. The Left, Right, Top, Bottom values
+are percent values. A value of one will result in a distance that is half the
+width of the camera. A value of zero will result in no edge detection. Use
+the Damp value to reduce the speed of the pan edge.</p>
+</section>
+<hr class="docutils" />
+<section id="zoom">
+<h2>Zoom<a class="headerlink" href="#zoom" title="Permalink to this headline"></a></h2>
+<p>This controls the camera zoom level. Zoom with Touch, Mouse, or
+Keyboard. The Range will determine the minimum and maximum zoom
+levels. Speed and Smooth will control the rate of the zoom.</p>
+</section>
+<hr class="docutils" />
+<section id="rotate">
+<h2>Rotate<a class="headerlink" href="#rotate" title="Permalink to this headline"></a></h2>
+<p>This controls the camera rotation. Rotate with Touch, Mouse, or
+Keyboard. Speed and Smooth will control the rate of rotation.</p>
+<hr class="docutils" />
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PauseUser (bool pausePan, bool pauseZoom, bool pauseRotate)</p></td>
+<td><p>Pause a user module.</p></td>
+</tr>
+<tr class="row-odd"><td><p>UserPanKeyboard (KeyCode left, KeyCode right, KeyCode up, KeyCode down)</p></td>
+<td><p>Change the user keyboard settings for pan movement.</p></td>
+</tr>
+<tr class="row-even"><td><p>UserPanMouse (Pan panType, MouseButton mouseButton, MouseButton holdButton)</p></td>
+<td><p>Change the user mouse settings for pan movement.</p></td>
+</tr>
+<tr class="row-odd"><td><p>UserZoomKeyboard (KeyCode zoomInKey, KeyCode zoomOutKey)</p></td>
+<td><p>Change the user keyboard settings for zooming.</p></td>
+</tr>
+<tr class="row-even"><td><p>UserRotateKeyboard (KeyCode rotateLeftKey, KeyCode rotateRightKey)</p></td>
+<td><p>Change the user keyboard settings for camera rotation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="worldClamp.html" class="btn btn-neutral float-left" title="World Clamp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pixelPerfect.html" class="btn btn-neutral float-right" title="Pixel Perfect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TwoBitMachines.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

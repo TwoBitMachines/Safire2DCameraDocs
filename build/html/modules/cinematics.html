@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinematics &mdash; Safire Engine 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Rails" href="rails.html" />
+    <link rel="prev" title="Rooms" href="rooms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Safire Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cinematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
+<li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="highlightTarget.html">Highlight Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoomTrigger.html">Zoom Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slowMotionTrigger.html">Slow Motion Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basicTrigger.html">Basic Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixelPerfect.html">Pixel Perfect</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Safire Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Cinematics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/cinematics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cinematics">
+<h1>Cinematics<a class="headerlink" href="#cinematics" title="Permalink to this headline"></a></h1>
+<p>Create cinematic sequences to highlight special moments in your game.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Name</p></td>
+<td><p>Name the cinematic for identification (optional).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>If Trigger Once is enabled, the cinematic can only be activated once by the target. If Trigger is enabled, the
+cinematic can be activated any number of times. If By Script is enabled, the cinematic can only be activated by a method call.</p></td>
+</tr>
+<tr class="row-even"><td><p>LetterBox</p></td>
+<td><p>Set the reference for the letterbox that will be activated to give the sequence a more cinematic feel.
+This prefab can be found in the Assets/Prefab folder.
+Drag and drop it into the scene and set the reference.</p></td>
+</tr>
+<tr class="row-odd"><td><p>On Begin</p></td>
+<td><p>The Unity Event invoked when the cinematic begins.</p></td>
+</tr>
+<tr class="row-even"><td><p>On Complete</p></td>
+<td><p>The Unity Event invoked when the cinematic completes.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Targets</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Position</p></td>
+<td><p>The position the camera will move to in sequence.
+This value can be modified in the scene.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Duration</p></td>
+<td><p>The time it takes for the camera to get to the target’s position.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wait</p></td>
+<td><p>Once the camera arrives at its target, specify how long it waits there. If the toggle is enabled,
+the wait time is indefinite. To exit out of this state, call the following method: CinematicNextTarget();</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zoom</p></td>
+<td><p>Zoom the camera to a specified zoom level.</p></td>
+</tr>
+<tr class="row-even"><td><p>On Arrival</p></td>
+<td><p>The Unity Event invoked when the camera arrives at the target.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CinematicTrigger (string cinematicName)</p></td>
+<td><p>Trigger this cinematic.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CinematicNextTarget ();</p></td>
+<td><p>Move to the next cinematic target if the wait time at
+the current one is indefinite.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="letterbox">
+<h2>LetterBox<a class="headerlink" href="#letterbox" title="Permalink to this headline"></a></h2>
+<p>The letterbox will activate black bars that will tween into the camera view during a cinematic. The tweening values
+can be modified in the Let’s Wiggle components attached to this gameobject. This is a tweening library that
+can be configured in the inspector. Simply change the time and tween settings for each MoveToY child tween.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rooms.html" class="btn btn-neutral float-left" title="Rooms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rails.html" class="btn btn-neutral float-right" title="Rails" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TwoBitMachines.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

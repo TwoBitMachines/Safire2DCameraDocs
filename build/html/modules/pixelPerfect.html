@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Perfect &mdash; Safire Engine 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="User" href="user.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Safire Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
+<li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="highlightTarget.html">Highlight Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoomTrigger.html">Zoom Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slowMotionTrigger.html">Slow Motion Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basicTrigger.html">Basic Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pixel Perfect</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Safire Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Pixel Perfect</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/pixelPerfect.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pixel-perfect">
+<h1>Pixel Perfect<a class="headerlink" href="#pixel-perfect" title="Permalink to this headline"></a></h1>
+<p>Event though Unity already has a Pixel Perfect Camera, this module will be kept
+for the completeness of the engine.</p>
+<p>This module is intended for use with orthographic cameras. Before starting your game,
+choose the resolution the game will be designed for. By default it’s set to 320x180 since
+it can multiply nicely into common device resolutions. This will determine how much of
+the game world the user can view as determined by the PPU of your game art; changing this
+resolution later might change the look and feel of the game, so choose
+wisely.</p>
+<p>The camera will execute in Edit Mode and create black bars automatically
+for any screen resolution that is not pixel perfect.</p>
+<p>It is recommended to use a separate camera for UI. Add the PixelPerfectUI component to the UI
+camera. Make sure the UI camera is only rendering the UI layer. On the flip side, the main camera should not
+render the UI layer. Match the PPU and resolution settings. On any canvas in your game world, set
+the render mode to Screen Space - Camera and set the UI camera as a reference. Set Canvas Scaler to scale
+with screen size and set the target resolution. Set the UI camera depth to a larger
+value than the main camera so it renders on top of it. And finally, set the clear flags to Don’t Clear.</p>
+<p>Typically you shouldn’t zoom with a pixel perfect camera as it will break pixel perfectness. But if you do, zoom by integer multiples
+if possible to retain a pixel perfect screen.</p>
+<p>All your sprites should strive to have the same PPU settings and bet set to Point filter with no compression.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PPU</p></td>
+<td><p>This is the PPU (Pixel Per Unit) of the game art. How many pixels fit in one world unit of the game?
+The Wrench Button, if clicked, will snap all scene objects to the PPU grid. The color will change the color
+of the black bars.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resolution</p></td>
+<td><p>The target size of your game world.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user.html" class="btn btn-neutral float-left" title="User" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TwoBitMachines.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

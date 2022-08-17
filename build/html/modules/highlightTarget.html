@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Highlight Target &mdash; Safire Engine 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Zoom Trigger" href="zoomTrigger.html" />
+    <link rel="prev" title="Follow Blocks" href="followBlocks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Safire Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lookAhead.html">Look Ahead</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rooms.html">Rooms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
+<li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Highlight Target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoomTrigger.html">Zoom Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slowMotionTrigger.html">Slow Motion Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basicTrigger.html">Basic Trigger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixelPerfect.html">Pixel Perfect</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Safire Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Highlight Target</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/highlightTarget.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="highlight-target">
+<h1>Highlight Target<a class="headerlink" href="#highlight-target" title="Permalink to this headline"></a></h1>
+<p>On occasion there is a need to highlight an important game element by
+having the camera follow it. This element is not the main target. It is also
+possible to follow the new target indefinitely and allow a certain range in which the main target can still
+influence the camera.</p>
+<p>Use this module to create predefined targets that can be triggered by some event and
+have the camera follow them. This requires the Follow module to be enabled.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Target</p></td>
+<td><p>The target can either be a transform or a position.
+Specify the follow speed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Duration</p></td>
+<td><p>The total time the camera will follow the target.
+If the toggle is enabled, the camera will follow the target indefinitely, or else it will revert to
+following the main target automatically.</p></td>
+</tr>
+<tr class="row-even"><td><p>Main Target Range</p></td>
+<td><p>If the camera is following the target indefinitely, this value will specify the
+range in which the main target can still influence camera movement.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ignore Clamps</p></td>
+<td><p>If enabled, the camera will be able to move through rooms while following the target.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HighlightTarget (string name)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>HighlightTargetTerminate ( )</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>HighlightTarget (…)</p></td>
+<td><p>If the highlight target hasn’t been created in the inspector, you can still create one by code.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="followBlocks.html" class="btn btn-neutral float-left" title="Follow Blocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="zoomTrigger.html" class="btn btn-neutral float-right" title="Zoom Trigger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, TwoBitMachines.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
