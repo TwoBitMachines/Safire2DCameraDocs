@@ -5,7 +5,7 @@ This is an easy to use shake creator. The idea is to create shakes with predefin
 can be activated at runtime by name. Each shake can be called by a method or by using the shake trigger. 
 Each shake that is created is actually linked to a Scriptable Object, which means you don't have 
 to keep recreating the same shakes for each scene. As long as the Scriptable Object is referenced, the 
-shakes will persist. In fact, the module won't work without this Scriptable Object. To create one, 
+shakes will be remembered. In fact, the module won't work without this Scriptable Object. To create one, 
 right click Create/FlareEngine/ShakesSO.
 
 Any shake implemented will run simultaneously with all other shakes. The system will pool 
@@ -20,11 +20,14 @@ Press the play button to test any shake while in Editor Mode.
    * - Property
      - 
 
+   * - Shake SO
+     - The reference to the Scriptable Object that will save the list of shakes.
+
    * - Name
      - Name the shake for identification purposes.
 
    * - TimeScale
-     -  If the shake uses time-scale, the shake can be affected by slow motion.
+     - If the shake uses time-scale, the shake can be affected by slow motion.
 
    * - Random
      - The camera abruptly shakes according to a random pattern.

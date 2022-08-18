@@ -23,7 +23,7 @@ direction. Choose how big the area will be to detect a touch or mouse
 position near the edge of the camera. The Left, Right, Top, Bottom values
 are percent values. A value of one will result in a distance that is half the
 width of the camera. A value of zero will result in no edge detection. Use
-the Damp value to reduce the speed of the pan edge.
+the Scale value to damp or boost the pan edge speed.
 
 -----------
 

@@ -91,7 +91,7 @@
 can be activated at runtime by name. Each shake can be called by a method or by using the shake trigger.
 Each shake that is created is actually linked to a Scriptable Object, which means you don’t have
 to keep recreating the same shakes for each scene. As long as the Scriptable Object is referenced, the
-shakes will persist. In fact, the module won’t work without this Scriptable Object. To create one,
+shakes will be remembered. In fact, the module won’t work without this Scriptable Object. To create one,
 right click Create/FlareEngine/ShakesSO.</p>
 <p>Any shake implemented will run simultaneously with all other shakes. The system will pool
 and recycle shakes to keep things nice an efficient.</p>
@@ -107,42 +107,45 @@ and recycle shakes to keep things nice an efficient.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Name</p></td>
+<tr class="row-even"><td><p>Shake SO</p></td>
+<td><p>The reference to the Scriptable Object that will save the list of shakes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Name</p></td>
 <td><p>Name the shake for identification purposes.</p></td>
 </tr>
-<tr class="row-odd"><td><p>TimeScale</p></td>
+<tr class="row-even"><td><p>TimeScale</p></td>
 <td><p>If the shake uses time-scale, the shake can be affected by slow motion.</p></td>
 </tr>
-<tr class="row-even"><td><p>Random</p></td>
+<tr class="row-odd"><td><p>Random</p></td>
 <td><p>The camera abruptly shakes according to a random pattern.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Perlin</p></td>
+<tr class="row-even"><td><p>Perlin</p></td>
 <td><p>Shake the camera with the perlin noise algorithm, resulting in a smoother and less chaotic
 shake.</p></td>
 </tr>
-<tr class="row-even"><td><p>Sine</p></td>
+<tr class="row-odd"><td><p>Sine</p></td>
 <td><p>Shake the camera with a sinusoidal algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td><p>One shot</p></td>
+<tr class="row-even"><td><p>One shot</p></td>
 <td><p>The camera shakes in a single direction. This is a recoil.
 This shake will need to be called by script since
 the shake direction can’t be known ahead of time.</p></td>
 </tr>
-<tr class="row-even"><td><p>Is Single Shake</p></td>
+<tr class="row-odd"><td><p>Is Single Shake</p></td>
 <td><p>These shakes are meant for high volumes short duration shakes such as bullet impacts.
 These shakes are grouped together and handled in a single state. The advantage is that these shakes are not
 added into the shake pool.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Amplitude</p></td>
+<tr class="row-even"><td><p>Amplitude</p></td>
 <td><p>This is the camera displacement in the horizontal and vertical axis. <strong>The value Z is the angle displacement.</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>Speed</p></td>
+<tr class="row-odd"><td><p>Speed</p></td>
 <td><p>How fast the shake is implemented. Typically, a lower value is smoother, while a higher value if sharper.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Strength</p></td>
+<tr class="row-even"><td><p>Strength</p></td>
 <td><p>Shake intensity.</p></td>
 </tr>
-<tr class="row-even"><td><p>Duration</p></td>
+<tr class="row-odd"><td><p>Duration</p></td>
 <td><p>How long the shake will last. The toggle button, if enabled, will make the shake last indefinitely. This is
 a constant shake and it must be turned off manually. Only one constant shake can run at a time.</p></td>
 </tr>
