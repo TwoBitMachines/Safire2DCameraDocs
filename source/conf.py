@@ -58,31 +58,36 @@ def setup(app):
     app.add_css_file('custom.css')
 
 
-# latex_elements = {
-
-#     # The paper size ('letterpaper' or 'a4paper').
-#     'papersize': 'letterpaper',
-
-#     # The font size ('10pt', '11pt' or '12pt').
-#     'pointsize': '11pt',
-
-#     # Additional stuff for the LaTeX preamble.
-#     'preamble': r'''
-#         \usepackage{charter}
-#         \usepackage[defaultsans]{lato}
-#         \usepackage{inconsolata}
-#     ''',
-
-#     'extraclassoptions': 'openany,oneside'
-# }
+pdf_documents = [('index', u'Safire Engine',
+                  u'Safire Engine Documentation', u'Two Bit Machines'), ]
 
 
-# StandaloneHTMLBuilder.supported_image_types = [
-#     'image/svg+xml',
-#     'image/gif',
-#     'image/png',
-#     'image/jpeg'
-# ]
+# 1. Install rst2pdf
+#     - use your package manager (or)
+#     - pip install rst2pdf (or)
+#     - easy_install rst2pdf
 
-# pdf_documents = [('index', u'Safire Engine',
-#                   u'Safire Engine Documentation', u'Two Bit Machines'), ]
+# 2. Add rst2pdf to the list of extensions in conf.py
+
+
+# extensions = ['rst2pdf.pdfbuilder']
+
+
+#     This list will be empty if you accepted the defaults when the project was setup. If not, just append 'rst2pdf.pdfbuilder' to the list.
+
+
+# 3. Add a pdf_documents variable to conf.py
+
+#   pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'Your Name'),]
+#   # index - master document
+#   # rst2pdf - name of the generated pdf
+#   # Sample rst2pdf doc - title of the pdf
+#   # Your Name - author name in the pdf
+
+# 4. Generate pdf
+
+
+# sphinx-build -b pdf source build/pdf
+
+
+#    The generated pdf will be in the build/pdf directory.

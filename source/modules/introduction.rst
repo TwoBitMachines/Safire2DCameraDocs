@@ -1,7 +1,7 @@
 Introduction
 ++++++++++++
 
-If reading the pdf version, go to https://twobitmachines.github.io/SafireEngineDocs
+If reading the auto generated pdf version, go to https://twobitmachines.github.io/SafireEngineDocs
 for a more readable experience. If you have any questions or feedback, 
 please contact us at TwoBitMachinesDev@gmail.com.
 
