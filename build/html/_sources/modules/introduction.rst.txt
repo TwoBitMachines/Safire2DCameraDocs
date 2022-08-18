@@ -5,7 +5,7 @@ If reading the auto generated pdf version, go to https://twobitmachines.github.i
 for a more readable experience. If you have any questions or feedback, 
 please contact us at TwoBitMachinesDev@gmail.com.
 
-Welcome! This is the documentation for Safire Engine. This tool
+Welcome! This is the documentation for Safire 2D Camera This tool
 contains modules that are fundamental to any 2D camera system. It
 has a friendly interface that makes it fast and easy to setup these systems.
 Simply put the **SafireCamera** component on the camera gameobject to 

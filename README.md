@@ -1,2 +1,2 @@
-# SafireEngineDocs
-Safire Engine Documentation
+# Safire2DCameraDocs
+Safire 2D Camera Documentation

@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Safire Engine'
+project = 'Safire 2D Camera'
 copyright = '2022, TwoBitMachines'
 author = 'TwoBitMachines'
 
@@ -58,8 +58,8 @@ def setup(app):
     app.add_css_file('custom.css')
 
 
-pdf_documents = [('index', u'Safire Engine',
-                  u'Safire Engine Documentation', u'Two Bit Machines'), ]
+pdf_documents = [('index', u'Safire 2D Camera',
+                  u'Safire 2D Camera Documentation', u'Two Bit Machines'), ]
 
 
 # 1. Install rst2pdf
