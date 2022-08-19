@@ -59,7 +59,7 @@ def setup(app):
 
 
 pdf_documents = [('index', u'Safire 2D Camera',
-                  u'Safire 2D Camera Documentation', u'Two Bit Machines'), ]
+                  u'Safire 2D Camera Documentation', u'TwoBitMachines'), ]
 
 
 # 1. Install rst2pdf
