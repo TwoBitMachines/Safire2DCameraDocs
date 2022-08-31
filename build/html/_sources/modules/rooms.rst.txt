@@ -34,7 +34,8 @@ the room. The room boundaries will then clamp the camera’s position.
        Match height: zoom to match the room height. Match width: zoom to match the room width.
 
    * - Restrict
-     - The target will not be able to physically move outside the room boundaries.
+     - The target will not be able to physically move outside the room boundaries. Warning: the player must be at least
+       one unit inside the room before this effect activates.
 
    * - Hold Target
      - If enabled, during a transition the system will prevent the target from moving.
