@@ -20,6 +20,7 @@ Safire 2D Camera Documentation
    modules/rails
    modules/shakes
    modules/parallax
+   modules/parallaxFinite
    modules/peek
    modules/followBlocks
    modules/highlightTarget

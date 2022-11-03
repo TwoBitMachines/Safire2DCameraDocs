@@ -1,5 +1,5 @@
-Parallax
-++++++++
+Infinite Parallax
++++++++++++++++++
 
 Create the illusion of depth by using several backgrounds to move with the camera. The 
 parallax will scroll infinitely, even with a perspective camera.

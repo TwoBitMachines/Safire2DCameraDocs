@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infinite Parallax &mdash; Safire 2D Camera 1.0 documentation</title>
+  <title>Finite Parallax &mdash; Safire 2D Camera 1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -18,9 +18,7 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Peek" href="peek.html" />
-    <link rel="prev" title="Shakes" href="shakes.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,7 +37,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="follow.html">Follow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="speedZoom.html">Speed Zoom</a></li>
@@ -48,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Infinite Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallax.html">Infinite Parallax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
 <li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="highlightTarget.html">Highlight Target</a></li>
@@ -75,9 +73,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Infinite Parallax</li>
+      <li>Finite Parallax</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/parallax.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/parallaxFinite.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,14 +83,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="infinite-parallax">
-<h1>Infinite Parallax<a class="headerlink" href="#infinite-parallax" title="Permalink to this headline"></a></h1>
-<p>Create the illusion of depth by using several backgrounds to move with the camera. The
-parallax will scroll infinitely, even with a perspective camera.</p>
-<p>Each background transform must contain a single sprite that is set to pivot center.
-Also, don’t forget to set the layer order manually for each sprite in order to render the background images in correct order.
-At runtime these backgrounds will be duplicated to achieve infinite parallax scrolling. Click the add button
-to add as many backgrounds as necessary.</p>
+  <section id="finite-parallax">
+<h1>Finite Parallax<a class="headerlink" href="#finite-parallax" title="Permalink to this headline"></a></h1>
+<p>Create the illusion of depth by using several backgrounds to move with the camera. This parallax
+will not scroll infinitely. The edge of the background will be exposed if not properly hidden.</p>
+<p>Each background can contain many child objects, and don’t forget to set the layer order manually for each background.
+Click the add button to add as many backgrounds as necessary.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If using a perspective camera, parallax comes for free! But you can still use this module to get infinite scrolling.</p>
@@ -109,36 +105,26 @@ to add as many backgrounds as necessary.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Transform Layer</p></td>
-<td><p>The Transform that will scroll with the camera.</p></td>
+<td><p>The transform that will scroll with the camera.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Parallax Rate</p></td>
 <td><p>The rate at which the transform scrolls with the camera. A value approaching 1 is for the farthest layers.
 A value approaching 0 is for the layers nearest to the player. Values less than -1 are for foregrounds layers.</p></td>
 </tr>
-<tr class="row-even"><td><p>Auto Scroll</p></td>
-<td><p>If this value is greater than zero, the transform will automatically move on its own.
-This could be a layer that contains clouds. Try many parallax rates until you get one that gives a correct motion with the auto scroll.</p></td>
+<tr class="row-even"><td><p>Starting Offset</p></td>
+<td><p>The offset applied to the transform layer during runtime to adjust for correct positioning if needed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max Distance</p></td>
+<td><p>The maximum distance the transform layer can scroll according to its parallax rate.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Infinite scrolling limitations: the camera size must always be smaller
-than the size of the image. If it isn’t, there will be noticeable gaps in each
-layer during scrolling. Things that can cause this are zooming the
-camera to a large value, a perspective camera that is too far away from
-the image layer, or a camera size that is simply too large. These issues
-may present themselves concurrently if not careful. Choose zoom levels wisely.</p>
-</div>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="shakes.html" class="btn btn-neutral float-left" title="Shakes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="peek.html" class="btn btn-neutral float-right" title="Peek" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
