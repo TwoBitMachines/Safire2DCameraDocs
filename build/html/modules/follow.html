@@ -48,7 +48,8 @@
 <li class="toctree-l1"><a class="reference internal" href="cinematics.html">Cinematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rails.html">Rails</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shakes.html">Shakes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallax.html">Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallax.html">Infinite Parallax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallaxFinite.html">Finite Parallax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peek.html">Peek</a></li>
 <li class="toctree-l1"><a class="reference internal" href="followBlocks.html">Follow Blocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="highlightTarget.html">Highlight Target</a></li>
@@ -56,6 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="slowMotionTrigger.html">Slow Motion Trigger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basicTrigger.html">Basic Trigger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regions.html">Regions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worldBounds.html">World Bounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="worldClamp.html">World Clamp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pixelPerfect.html">Pixel Perfect</a></li>
@@ -106,25 +108,28 @@
 <td><p>The camera will smooth towards the target.
 A value of zero halts the camera. A value of one instantly moves the camera to the target’s position.</p></td>
 </tr>
-<tr class="row-even"><td><p>Offset</p></td>
+<tr class="row-even"><td><p>Return Smooth</p></td>
+<td><p>The smoothing effect applied to the camera as it returns to the player from using another module.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Offset</p></td>
 <td><p>Offset the target’s follow position in the x or y axis.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dead Zone</p></td>
+<tr class="row-even"><td><p>Dead Zone</p></td>
 <td><p>The area surrounding the target in which no target movement is detected by the camera.</p></td>
 </tr>
-<tr class="row-even"><td><p>Screen Zone</p></td>
+<tr class="row-odd"><td><p>Screen Zone</p></td>
 <td><p>Prevent the target from escaping the camera view. This occurs when the target is moving too fast or when the
 camera is moving too slow.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Auto Scroll</p></td>
+<tr class="row-even"><td><p>Auto Scroll</p></td>
 <td><p>Scroll the camera with the specified speed. Setting any axis here will override the other mechanics in that axis</p></td>
 </tr>
-<tr class="row-even"><td><p>Detect Walls</p></td>
+<tr class="row-odd"><td><p>Detect Walls</p></td>
 <td><p>If None is enabled, the system will ignore this setting. If Ignore Gravity is enabled, the camera will not follow the target when it’s jumping.
 If Detect Walls is enabled, the camera will only follow the target if it’s touching a surface. Specify the layer that represents hard surfaces in your world.
 This mechanic assumes the target contains a BoxCollider2D. Enable this by method. 0 == Node, 1 == IgnoreGravity, 2 == DetectWalls.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Push Zone</p></td>
+<tr class="row-even"><td><p>Push Zone</p></td>
 <td><p>Force the camera to follow the target only in the desired direction. For example, if Push Zone X is set to Push Left, the camera will ignore the target if it’s
 moving to the right. The value represents where in the screen the camera will begin to follow the target. Do note, the camera will ease into the push zone to prevent
 abrupt target changes.</p></td>

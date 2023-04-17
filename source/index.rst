@@ -28,6 +28,7 @@ Safire 2D Camera Documentation
    modules/slowMotionTrigger
    modules/basicTrigger
    modules/regions
+   modules/worldBounds
    modules/worldClamp
    modules/user
    modules/pixelPerfect

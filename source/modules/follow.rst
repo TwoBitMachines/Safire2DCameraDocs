@@ -17,6 +17,9 @@ Implement standard camera mechanics for following the target. Mix and match thes
      - The camera will smooth towards the target. 
        A value of zero halts the camera. A value of one instantly moves the camera to the target’s position.
 
+   * - Return Smooth
+     - The smoothing effect applied to the camera as it returns to the player from using another module.
+
    * - Offset
      - Offset the target’s follow position in the x or y axis.
 
