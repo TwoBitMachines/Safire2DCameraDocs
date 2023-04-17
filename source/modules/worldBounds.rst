@@ -5,7 +5,7 @@ World bounds are lines that clamp the camera's movement. They are a flexible
 alternative to rooms when more precise control over camera movement is required.
 
 An important aspect of these bounds is that they only come into effect when 
-the player is within their boundaries. The camera will only be limited once 
+the player is within their boundaries. The camera will only be clamped once 
 it has fully crossed the threshold of the bounds.
 
 .. list-table::
